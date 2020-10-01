@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
-namespace SimpleConcepts.Hosting.BackgroundAction
+namespace SimpleConcepts.Extensions.HostedTasks
 {
     public class LifecycleTasksHostedService : IHostedService
     {

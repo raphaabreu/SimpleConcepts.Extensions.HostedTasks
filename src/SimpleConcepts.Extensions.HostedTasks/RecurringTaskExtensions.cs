@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
-using SimpleConcepts.Hosting.BackgroundAction;
+using SimpleConcepts.Extensions.HostedTasks;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -19,11 +20,9 @@ namespace Microsoft.Extensions.DependencyInjection
             Func<IServiceProvider, CancellationToken, Task> taskFactory,
             Action<RecurringTaskOptions> configureOptions)
         {
-            var options = new RecurringTaskOptions();
-            configureOptions(options);
-
+            services.AddTransient<RecurringTaskHostedService>();
             services.AddSingleton<IHostedService>(provider =>
-                ActivatorUtilities.CreateInstance<RecurringTaskHostedService>(provider, taskFactory));
+                ActivatorUtilities.CreateInstance<RecurringTaskHostedService>(provider, provider.MergeOptions(configureOptions), taskFactory));
 
             return services;
         }
@@ -38,13 +37,36 @@ namespace Microsoft.Extensions.DependencyInjection
             Func<T, CancellationToken, Task> taskFactory,
             Action<RecurringTaskOptions> configureOptions)
         {
-            var options = new RecurringTaskOptions();
-            configureOptions(options);
-
+            services.Add(ServiceDescriptor.Transient(typeof(RecurringTaskHostedService<>), typeof(RecurringTaskHostedService<>)));
             services.AddSingleton<IHostedService>(provider =>
-                ActivatorUtilities.CreateInstance<RecurringTaskHostedService<T>>(provider, taskFactory));
+                ActivatorUtilities.CreateInstance<RecurringTaskHostedService<T>>(provider, provider.MergeOptions(configureOptions),
+                    new Func<IServiceProvider, CancellationToken, Task>((scopedProvider, cancellationToken) =>
+                        taskFactory(scopedProvider.GetRequiredService<T>(), cancellationToken))));
 
             return services;
+        }
+
+        public static IServiceCollection ConfigureRecurringTasks(this IServiceCollection services,
+            Action<RecurringTaskOptions> configureOptions)
+        {
+            services.AddSingleton(configureOptions);
+
+            return services;
+        }
+
+        private static RecurringTaskOptions MergeOptions(this IServiceProvider provider,
+            Action<RecurringTaskOptions> configureOptions)
+        {
+            var configurators = provider.GetRequiredService<IEnumerable<Action<RecurringTaskOptions>>>();
+            var opts = new RecurringTaskOptions();
+
+            foreach (var configurator in configurators)
+            {
+                configurator(opts);
+            }
+            configureOptions(opts);
+
+            return opts;
         }
     }
 }

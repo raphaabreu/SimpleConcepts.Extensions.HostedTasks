@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace SimpleConcepts.Hosting.BackgroundAction
+namespace SimpleConcepts.Extensions.HostedTasks
 {
     public class RecurringTaskHostedService : BackgroundService
     {

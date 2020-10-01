@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleConcepts.Hosting.BackgroundAction
+namespace SimpleConcepts.Extensions.HostedTasks
 {
     public class RecurringTaskOptions
     {

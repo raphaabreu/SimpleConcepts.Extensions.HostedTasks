@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SimpleConcepts.Hosting.BackgroundAction
+namespace SimpleConcepts.Extensions.HostedTasks
 {
     public class LifecycleTasksOptions
     {
