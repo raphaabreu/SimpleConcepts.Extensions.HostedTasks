@@ -30,17 +30,20 @@ To add a startup task:
 
 ```csharp
 // Register a function to be called during app startup.
-services.AddStartupTask<IClusterService>((service, cancellationToken) => service.DiscoverNodesAsync(cancellationToken));
+services.AddStartupTask<IClusterService>((service, cancellationToken) => 
+    service.DiscoverNodesAsync(cancellationToken));
 
 // Register a second function, all tasks will be executed in parallel when the application starts.
-services.AddStartupTask<IDatabaseService>((service, cancellationToken) => service.FillConnectionPoolAsync(cancellationToken));
+services.AddStartupTask<IDatabaseService>((service, cancellationToken) => 
+    service.FillConnectionPoolAsync(cancellationToken));
 ```
 
 To add a shutdown task:
 
 ```csharp
 // Register a function to be called during app shutdown.
-services.AddShutdownTask<IClusterService>((service, cancellationToken) => service.DisconnectAsync(cancellationToken));
+services.AddShutdownTask<IClusterService>((service, cancellationToken) => 
+    service.DisconnectAsync(cancellationToken));
 ```
 
 Both methods have overloads that allow easy injection of multiple services if needed.
@@ -67,14 +70,16 @@ To setup a recurring task, simply call:
 
 ```csharp
 // Add recurring task with default intervals.
-services.AddRecurringTask<IQueueService>((service, cancellationToken) => service.CheckQueueAsync(cancellationToken));
+services.AddRecurringTask<IQueueService>((service, cancellationToken) => 
+    service.CheckQueueAsync(cancellationToken));
 ```
 
 You can optionally configure how often you want the function to be invoked:
 
 ```csharp
 // Add recurring task with custom intervals.
-services.AddRecurringTask<IQueueService>((service, cancellationToken) => service.CheckQueueAsync(cancellationToken), opt =>
+services.AddRecurringTask<IQueueService>((service, cancellationToken) => 
+    service.CheckQueueAsync(cancellationToken), opt =>
 {
     opt.WaitBeforeStart = TimeSpan.FromSeconds(1);
     opt.WaitAfterCompletion = TimeSpan.FromSeconds(3.7);
