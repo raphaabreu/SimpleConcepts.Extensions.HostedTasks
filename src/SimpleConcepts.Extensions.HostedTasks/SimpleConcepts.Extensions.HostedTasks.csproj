@@ -5,7 +5,7 @@
     <Authors>Raphael Lorenzeto de Abreu</Authors>
     <RootNamespace>SimpleConcepts.Extensions.HostedTasks</RootNamespace>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Description>This package provides extensions to define tasks that should be run at service startup/shutdown or in a recurring pattern.</Description>
+    <Description>Extensions to configure tasks that should be executed on application startup, shutdown or repeating after an interval.</Description>
     <RepositoryUrl>https://github.com/raphaabreu/SimpleConcepts.Extensions.HostedTasks</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageProjectUrl>https://github.com/raphaabreu/SimpleConcepts.Extensions.HostedTasks</PackageProjectUrl>
