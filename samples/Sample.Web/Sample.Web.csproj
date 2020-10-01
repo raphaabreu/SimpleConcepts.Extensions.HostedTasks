@@ -7,7 +7,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleConcepts.Extensions.HostedTasks\SimpleConcepts.Extensions.HostedTasks.csproj" />
+    <ProjectReference Include="..\..\src\SimpleConcepts.Extensions.HostedTasks\SimpleConcepts.Extensions.HostedTasks.csproj" />
   </ItemGroup>
 
 

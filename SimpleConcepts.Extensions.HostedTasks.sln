@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0871DB05-E39
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{80257752-0C82-4FA8-AD6C-74736A3A7632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Web", "src\Sample.Web\Sample.Web.csproj", "{07A07C13-0FB5-4D19-8915-A88B85536725}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Web", "samples\Sample.Web\Sample.Web.csproj", "{07A07C13-0FB5-4D19-8915-A88B85536725}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
