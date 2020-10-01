@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Raphael Lorenzeto de Abreu</Authors>
+    <RootNamespace>SimpleConcepts.Extensions.HostedTasks</RootNamespace>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>
+      This package provides extensions to define tasks that should be run at service startup/shutdown or in a recurring pattern.
+      The main difference from using `IHostApplicationLifetime` is that this package allows everything to be setup at configuration-time,
+      before the `IServiceProvider` is build, while the `IHostApplicationLifetime` would require you to either build the service provider multiple
+      times or to register the tasks after the services are configured.</Description>
+    <RepositoryUrl>https://github.com/raphaabreu/SimpleConcepts.Extensions.HostedTasks</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageProjectUrl>https://github.com/raphaabreu/SimpleConcepts.Extensions.HostedTasks</PackageProjectUrl>
+    <PackageTags>simpleconcepts extensions hosted task startup shutdown recurring infinite loop</PackageTags>
+    <Copyright>MIT</Copyright>
+    <Version>1.0.0</Version>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
+  </ItemGroup>
+
+</Project>
