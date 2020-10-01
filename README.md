@@ -31,6 +31,9 @@ To add a startup task:
 ```csharp
 // Register a function to be called during app startup.
 services.AddStartupTask<IClusterService>((service, cancellationToken) => service.DiscoverNodesAsync(cancellationToken));
+
+// Register a second function, all tasks will be executed in parallel when the application starts.
+services.AddStartupTask<IDatabaseService>((service, cancellationToken) => service.FillConnectionPoolAsync(cancellationToken));
 ```
 
 To add a shutdown task:
