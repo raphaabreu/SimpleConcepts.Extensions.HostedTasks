@@ -13,7 +13,7 @@ namespace Sample.Web.Services
             _logger = logger;
         }
 
-        public Task CheckFirstQueueAsync(CancellationToken cancellationToken)
+        public Task CheckFirstQueueAsync()
         {
             _logger.LogInformation($"{nameof(SampleService2)} checking first queue...");
 

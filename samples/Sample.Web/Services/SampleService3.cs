@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 namespace Sample.Web.Services
@@ -13,7 +12,7 @@ namespace Sample.Web.Services
             _logger = logger;
         }
 
-        public Task SendFinalMessageAsync(CancellationToken cancellationToken)
+        public Task SendFinalMessageAsync()
         {
             _logger.LogInformation($"{nameof(SampleService1)} sending final message");
 

@@ -11,6 +11,31 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class RecurringTaskExtensions
     {
         public static IServiceCollection AddRecurringTask(this IServiceCollection services,
+            Func<IServiceProvider, Task> taskFactory)
+        {
+            return services.AddRecurringTask((provider, token) => taskFactory(provider), opt => { });
+        }
+
+        public static IServiceCollection AddRecurringTask(this IServiceCollection services,
+            Func<IServiceProvider, Task> taskFactory,
+            Action<RecurringTaskOptions> configureOptions)
+        {
+            return services.AddRecurringTask((provider, token) => taskFactory(provider), configureOptions);
+        }
+        public static IServiceCollection AddRecurringTask<T>(this IServiceCollection services,
+            Func<T, Task> taskFactory)
+        {
+            return services.AddRecurringTask<T>(taskFactory, opt => { });
+        }
+
+        public static IServiceCollection AddRecurringTask<T>(this IServiceCollection services,
+            Func<T, Task> taskFactory,
+            Action<RecurringTaskOptions> configureOptions)
+        {
+            return services.AddRecurringTask<T>((t, token) => taskFactory(t), configureOptions);
+        }
+
+        public static IServiceCollection AddRecurringTask(this IServiceCollection services,
             Func<IServiceProvider, CancellationToken, Task> taskFactory)
         {
             return services.AddRecurringTask(taskFactory, opt => { });

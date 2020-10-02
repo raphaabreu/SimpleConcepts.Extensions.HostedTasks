@@ -38,7 +38,7 @@ namespace Sample.Web
             });
 
             // Register a function to be called in an infinite loop, by default the task is invoked every second.
-            services.AddRecurringTask<SampleService2>((service, token) => service.CheckFirstQueueAsync(token));
+            services.AddRecurringTask<SampleService2>(service => service.CheckFirstQueueAsync());
 
             // Register another function to be called with a custom delay.
             services.AddRecurringTask<SampleService2>((service, token) => service.CheckSecondQueueAsync(token),
@@ -54,7 +54,7 @@ namespace Sample.Web
             });
 
             // Register a function to be called during app shutdown.
-            services.AddShutdownTask<SampleService3>((service, token) => service.SendFinalMessageAsync(token));
+            services.AddShutdownTask<SampleService3>(service => service.SendFinalMessageAsync());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
