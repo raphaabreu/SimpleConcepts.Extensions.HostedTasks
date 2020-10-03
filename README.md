@@ -1,3 +1,6 @@
+[![Nuget](https://img.shields.io/nuget/v/SimpleConcepts.Extensions.HostedTasks)](https://www.nuget.org/packages/SimpleConcepts.Extensions.HostedTasks/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/raphaabreu/SimpleConcepts.Extensions.HostedTasks/master/LICENSE)
+
 # SimpleConcepts.Extensions.HostedTasks
 
 This package provides extensions to define tasks that should be run at service startup/shutdown or in a recurring pattern.
